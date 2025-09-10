@@ -7,6 +7,7 @@ import { Observable, tap } from 'rxjs';
 import { AuthResponse } from '../models/response/auth-response.model';
 import { SignupRequest } from '../models/request/signup-request.model';
 import { Profile } from '../models/response/profile-response.model';
+import { Role } from '../models/enums/role.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -66,5 +67,10 @@ export class AuthService {
  getUserData(): Observable<Profile> {
     return this.http.get<Profile>(`${this.baseURL}/me`);
   }
-  //aqui quede
+
+
+  getUserRole(): Role | null {
+    const authData = this.storageService.getAuthData();
+    return authData ? authData.user.role : null;
+  }
 }
