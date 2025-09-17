@@ -70,7 +70,7 @@ export class AuthService {
 
 
   getUserRole(): Role | null {
-    const authData = this.storageService.getAuthData();
-    return authData ? authData.user.role : null;
+      const authData = this.storageService.getAuthData();
+  return authData ? authData.user.role : null;
   }
 }

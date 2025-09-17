@@ -1,0 +1,69 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2 class="fw-bold text-center">Regístrate</h2>
+     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+       <mat-form-field appearance="outline" class="full-width">
+         <mat-label>Nombre</mat-label>
+           <input matInput formControlName="nombres" type="text" required />
+		       @if(controlHasError('nombres', 'required')){
+			       <mat-error>Los nombres son obligatorios</mat-error>
+		        }
+       </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+		    <mat-label>Apellidos</mat-label>
+		      <input matInput formControlName="apellidos" type="text" required />
+		      @if(controlHasError('apellidos', 'required')){
+			      <mat-error>Los apellidos son obligatorios</mat-error>
+		      }
+		  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Comuna</mat-label>
+          <input matInput formControlName="comuna" type="text" required />
+          @if(controlHasError('comuna', 'required')){
+            <mat-error>La comuna es obligatoria</mat-error>
+          }
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="telefono" type="text" required />
+          @if(controlHasError('telefono', 'required')){
+            <mat-error>El teléfono es obligatorio</mat-error>
+          }
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          @if(controlHasError('email', 'required')){
+            <mat-error>El email es obligatorio</mat-error>
+          }
+          @if(controlHasError('email', 'email')){
+            <mat-error>Ingrese un email válido</mat-error>
+          }
+        </mat-form-field>
+
+		    <mat-form-field appearance="outline" class="full-width">
+		      <mat-label>Contraseña</mat-label>
+		      <input matInput formControlName="password" type="password" required />
+		      @if(controlHasError('password', 'required')){
+			      <mat-error>La contraseña es obligatoria</mat-error>
+		      }
+          @if(controlHasError('password', 'minlength')){
+            <mat-error>La contraseña debe tener al menos 4 caracteres</mat-error>
+          }
+		   </mat-form-field>
+       	<mat-form-field appearance="outline" class="full-width">
+		  <mat-label>Confirmar Contraseña</mat-label>
+		  <input matInput formControlName="confirmPassword" type="password" required />
+		  @if(controlHasError('confirmPassword', 'required')){
+			<mat-error>La confirmación de la contraseña es obligatoria</mat-error>
+		  }
+
+		  @if(controlHasError('confirmPassword', 'passwordMismatch')){
+			<mat-error>Las contraseñas no coinciden</mat-error>
+		  }
+		</mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid" class="btn-login">Registrarse</button>
+  </form>
+  <p class="register-link">¿Ya tienes una cuenta? <a routerLink="/auth/sign-in">Inicia sesión aquí</a></p>
+  </div>
+</div>
