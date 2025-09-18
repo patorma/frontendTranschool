@@ -139,3 +139,7 @@ mat-toolbar button.mat-raised-button.primary:hover {
       margin-bottom: 8px; /* Agrega espacio entre el título y los botones en pantallas pequeñas */
   }
 }
+
+.ms-3{
+  margin-left: 1rem;
+}

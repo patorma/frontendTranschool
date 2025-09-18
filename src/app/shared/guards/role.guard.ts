@@ -1,36 +1,45 @@
 import { inject } from '@angular/core';
-import { Router, type CanActivateFn } from '@angular/router';
+import { Router, CanActivateFn } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Role } from '../models/enums/role.enum';
+import { map, catchError, of } from 'rxjs';
 
 export const roleGuard: CanActivateFn = (route, state) => {
-
   const authService = inject(AuthService);
   const router = inject(Router);
 
-
-  // roles permitidos en la ruta
   const allowedRoles = route.data['roles'] as Role[];
-  const userRole = authService.getUserRole();
-  console.log('userRole:', userRole, 'allowedRoles:', allowedRoles)
 
-  if(!authService.isAuthenticated()){
+  if (!authService.isAuthenticated()) {
     router.navigate(['/auth/sign-in']);
     return false;
   }
-  if (userRole && allowedRoles.includes(userRole)) {
-    return true;
-  } else {
-    router.navigate(['/unauthorized']);
-    return false;
-  }
 
-     // if(authService.isAuthenticated() && userRole && allowedRoles.includes(userRole)){
-  //   return true //si esta autenticado retorna true y puede acceder a la ruta
-  // } else {
-  //   router.navigate(['/auth/sign-in']); //si no esta autenticado lo redirige al login
-  //    return false;
-  // }
+  return authService.getUserData().pipe(
+    map(user => {
+      // convertimos el enum a string temporalmente
+      let userRoleStr = user.role as unknown as string;
 
+      // normalizamos si viene con "ROLE_"
+      if (userRoleStr.startsWith('ROLE_')) {
+        userRoleStr = userRoleStr.substring(5);
+      }
 
+      // convertimos de nuevo a enum
+      const userRole = userRoleStr as unknown as Role;
+      console.log('userRole:', userRole, typeof userRole);
+      console.log('allowedRoles:', allowedRoles);
+      if (allowedRoles.includes(userRole)) {
+        return true;
+      } else {
+        router.navigate(['/unauthorized']);
+        return false;
+      }
+    }),
+    catchError(err => {
+      console.error('Error obteniendo rol de usuario', err);
+      router.navigate(['/auth/sign-in']);
+      return of(false);
+    })
+  );
 };

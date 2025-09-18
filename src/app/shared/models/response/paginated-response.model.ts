@@ -1,12 +1,13 @@
-import { MensualidadResponse } from "./mensualidad-response.model";
 
-//equivalente  a respuesta de {{base_url_transchool}}/mensualidades/my-mensualidades/page
+import { Profile } from "./profile-response.model";
+
+//equivalente  a respuesta de {{base_url_transchool}}/admin/usuarios/page
 export interface PaginatedResponse{
 
   totalElements: number;
   totalPages: number;
   size: number;
-  content: MensualidadResponse[];
+  content: Profile[];
   number: number;
   sort: {
     empty: boolean;

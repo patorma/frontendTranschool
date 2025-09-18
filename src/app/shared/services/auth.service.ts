@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { AuthRequest } from '../models/request/auth-request.model';
 import { Observable, tap } from 'rxjs';
@@ -8,12 +8,15 @@ import { AuthResponse } from '../models/response/auth-response.model';
 import { SignupRequest } from '../models/request/signup-request.model';
 import { Profile } from '../models/response/profile-response.model';
 import { Role } from '../models/enums/role.enum';
+import { PaginatedResponse } from '../models/response/paginated-response.model';
+import { DeleteResponse } from '../models/response/delete-response.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private baseURL: string = `${environment.HOST}/auth`;
+  private baseURLAdmin: string = `${environment.HOST}/admin`
   private http = inject(HttpClient);
 
   private storageService = inject(StorageService);
@@ -43,6 +46,11 @@ export class AuthService {
     return this.http.post<Profile>(`${this.baseURL}/crear`, signupRequest);
   }
 
+  crearTransportista(signupRequest: SignupRequest): Observable<Profile>{
+    return this.http.post<Profile>(`${this.baseURLAdmin}/sign-up`, signupRequest);
+  }
+
+
 
 
   logout(): void {
@@ -68,9 +76,30 @@ export class AuthService {
     return this.http.get<Profile>(`${this.baseURL}/me`);
   }
 
-
-  getUserRole(): Role | null {
-      const authData = this.storageService.getAuthData();
-  return authData ? authData.user.role : null;
+  getAllUsers(page: number,size:number):Observable<PaginatedResponse>{
+    //le envia los parametros de paginacion
+       const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/page`,{ params });
   }
+
+   findByIdUser(id:number):Observable<Profile>{
+      return this.http.get<Profile>(`${this.baseURLAdmin}/findUser/${id}`);
+   }
+
+
+   updateUser(id: number, signupRequest:SignupRequest): Observable<Profile>{
+      return this.http.put<Profile>(`${this.baseURLAdmin}/user/${id}`,signupRequest);
+   }
+
+
+   deleteUserByAdmin(id:number): Observable<DeleteResponse>{
+     return this.http.delete<DeleteResponse>(`${this.baseURLAdmin}/user/eliminar/${id}`)
+   }
+
+  // getUserRole(): Role | null {
+
+
+  // }
 }

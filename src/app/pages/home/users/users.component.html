@@ -1,0 +1,53 @@
+<div class="catalog-container">
+  <!-- Sidebar con botón para crear -->
+  <div class="sidebar">
+    <h3>Opciones</h3>
+    <ul>
+      <!-- <li>
+        <button mat-raised-button color="primary" (click)="createUser()">Crear Usuario</button>
+      </li> -->
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <div class="result-count">
+      <p>{{ totalElements }} usuarios encontrados</p>
+    </div>
+
+    <!-- Grid de usuarios -->
+    <div class="card-grid">
+      @for (user of users; track $index) {
+        <div class="card-item">
+          <mat-card class="user-card">
+            <mat-card-header>
+              <mat-card-title>{{ user.nombres }} {{user.apellidos}}</mat-card-title>
+              <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p><strong>Rol:</strong>  {{ user.role }}</p>
+              <p><strong>Comuna:</strong> {{ user.comuna }}</p>
+              <p><strong>Telefono:</strong> {{ user.telefono }}</p>
+              <p><strong>ID:</strong> {{ user.id }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
+              <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      } @empty {
+        <p>No hay usuarios registrados</p>
+      }
+    </div>
+
+    <!-- Paginador -->
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
+

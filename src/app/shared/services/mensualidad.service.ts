@@ -2,12 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PaginatedResponse } from '../models/response/paginated-response.model';
 import { Estado } from '../models/enums/estado.enum';
 import { MensualidadRequest } from '../models/request/mensualidad-request.model';
 import { MensualidadResponse } from '../models/response/mensualidad-response.model';
 import { DeleteResponse } from '../models/response/delete-response.model';
 import { ReactivaResposne } from '../models/response/reactiva-response.model';
+import { PaginatedMensualidadResponse } from '../models/response/paginated-mensualidad-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,36 +20,36 @@ export class MensualidadService {
 
   constructor() { }
 
-  getAllMensualidadesByApoderado(page: number,size:number):Observable<PaginatedResponse>{
+  getAllMensualidadesByApoderado(page: number,size:number):Observable< PaginatedMensualidadResponse>{
     //le envia los parametros de paginacion
       const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString())
-      return this.http.get<PaginatedResponse>(`${this.baseURLApoderado}/page`,{ params })
+      return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLApoderado}/page`,{ params })
   }
 
-  getAllMensualidadesByAdmin(page: number,size:number):Observable<PaginatedResponse>{
+  getAllMensualidadesByAdmin(page: number,size:number):Observable<PaginatedMensualidadResponse>{
     //le envia los parametros de paginacion
       const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString())
-      return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/mensualidades/page`,{ params })
+      return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLAdmin}/mensualidades/page`,{ params })
   }
 
-  findByEstadoMensualidadesAdmin(state_mensualidad:Estado, page: number, size: number): Observable<PaginatedResponse>{
+  findByEstadoMensualidadesAdmin(state_mensualidad:Estado, page: number, size: number): Observable<PaginatedMensualidadResponse>{
     const params = new HttpParams()
     .set('state_mensualidad', state_mensualidad)
     .set('page', page.toString())
     .set('size', size.toString());
-    return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/mensualidades/page/state`, { params });
+    return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLAdmin}/mensualidades/page/state`, { params });
   }
 
-  findByIdUserMensualidadesAdmin(id:number, page: number, size: number): Observable<PaginatedResponse>{
+  findByIdUserMensualidadesAdmin(id:number, page: number, size: number): Observable<PaginatedMensualidadResponse>{
     const params = new HttpParams()
     .set('id', id.toString())
     .set('page', page.toString())
     .set('size', size.toString());
-    return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/mensualidades/page/id-user`, { params });
+    return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLAdmin}/mensualidades/page/id-user`, { params });
   }
 
   //Metodo que el admin registra la mensualidad que debe pagar el apoderado
