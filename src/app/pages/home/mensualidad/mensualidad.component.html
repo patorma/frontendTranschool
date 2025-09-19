@@ -1,1 +1,55 @@
-<h1>Hola soy mensualidad</h1>
+<div class="catalog-container">
+  <!-- Sidebar con botón para crear -->
+  <div class="sidebar">
+    <h3>Opciones</h3>
+    <ul>
+      <!-- <li>
+        <button mat-raised-button color="primary" (click)="createUser()">Crear Usuario</button>
+      </li> -->
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <div class="result-count">
+      <p>{{ totalElements }} Mensualidades encontrados</p>
+    </div>
+
+    <!-- Grid de usuarios -->
+    <div class="card-grid">
+      @for (mensualidad of mensualidades; track $index) {
+        <div class="card-item">
+          <mat-card class="user-card">
+            <mat-card-header>
+              <mat-card-title>{{ mensualidad.usuario.nombres }} </mat-card-title>
+              <mat-card-subtitle>{{mensualidad.usuario.apellidos}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p><strong>ID:</strong>  {{  mensualidad.id  }}</p>
+              <p><strong>Monto:</strong>  {{  mensualidad.monto  }}</p>
+              <p><strong>Rol:</strong>  {{ mensualidad.usuario.role }}</p>
+              <p><strong>Fecha de Vencimiento:</strong> {{ mensualidad.fechaVencimiento }}</p>
+              <p><strong>Estado:</strong> {{ mensualidad.estado }}</p>
+              <p><strong>Enabled:</strong> {{ mensualidad.enabled }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
+              <button mat-stroked-button color="warn" (click)="deleteMensualidad(mensualidad.id)">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      } @empty {
+        <p>No hay mensualidades registradas</p>
+      }
+    </div>
+
+    <!-- Paginador -->
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
+
