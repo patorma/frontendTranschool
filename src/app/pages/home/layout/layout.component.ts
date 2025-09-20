@@ -30,6 +30,7 @@ export class LayoutComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+
   get user(){
     return this.authService.getCurrentUser();
   }
@@ -41,6 +42,8 @@ export class LayoutComponent {
   get isApoderado(){
     return this.user?.role === Role.APODERADO;
   }
+
+
 
   logout(){
     this.authService.logout();

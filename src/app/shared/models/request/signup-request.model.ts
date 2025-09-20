@@ -1,4 +1,4 @@
-import { Role } from '../enums/role.enum';
+
 
 export interface SignupRequest {
   id: number;
@@ -8,5 +8,7 @@ export interface SignupRequest {
   telefono: string;
   email: string;
   password: string;
-  role: Role;
+  role: roles;
 }
+
+export type roles = 'ADMIN' |'APODERADO' |'TRANSPORTISTA';

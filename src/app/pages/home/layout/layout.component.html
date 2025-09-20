@@ -8,13 +8,23 @@
       Usuarios
     </button>
     <button
-      *ngIf="isAdmin || isApoderado"
+      *ngIf="isAdmin"
       mat-button
       routerLink="/pages/mensualidades"
       class="ms-3"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
       Mensualidades
+    </button>
+    <button
+       *ngIf="isApoderado"
+       mat-button
+       routerLink="/pages/my-mensualidades"
+       class="ms-3"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }"
+      >
+       Mis mensualidades
     </button>
     <span class="spacer"></span>
     <button mat-button [matMenuTriggerFor]="userMenu">

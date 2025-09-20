@@ -8,7 +8,7 @@ export const roleGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  const allowedRoles = route.data['roles'] as Role[];
+ const allowedRoles = (route.data['role'] as string[]) || [];
 
   if (!authService.isAuthenticated()) {
     router.navigate(['/auth/sign-in']);
@@ -26,10 +26,11 @@ export const roleGuard: CanActivateFn = (route, state) => {
       }
 
       // convertimos de nuevo a enum
-      const userRole = userRoleStr as unknown as Role;
+      let userRole = userRoleStr as unknown as Role;
       console.log('userRole:', userRole, typeof userRole);
       console.log('allowedRoles:', allowedRoles);
       if (allowedRoles.includes(userRole)) {
+
         return true;
       } else {
         router.navigate(['/unauthorized']);

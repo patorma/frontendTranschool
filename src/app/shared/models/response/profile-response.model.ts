@@ -1,4 +1,4 @@
-import { Role } from "../enums/role.enum";
+
 
 export interface Profile{
 
@@ -8,5 +8,6 @@ export interface Profile{
   comuna: string;
   telefono: string;
   email: string;
-  role: Role;
+  role: roles;
 }
+export type roles = 'ADMIN' |'APODERADO' |'TRANSPORTISTA';
