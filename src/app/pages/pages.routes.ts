@@ -6,6 +6,12 @@ import { MensualidadComponent } from "./home/mensualidad/mensualidad.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 import { MisMensualidadesComponent } from "./home/mis-mensualidades/mis-mensualidades.component";
+import { FormMensualidadComponent } from "./home/form-mensualidad/form-mensualidad.component";
+import { FormUserComponent } from "./home/form-user/form-user.component";
+import { UserApoderadoComponent } from "./home/user-apoderado/user-apoderado.component";
+import { UserTransportistaComponent } from "./home/user-transportista/user-transportista.component";
+import { FurgonComponent } from "./home/furgon/furgon.component";
+import { FormFurgonComponent } from "./home/form-furgon/form-furgon.component";
 
 
 
@@ -19,10 +25,67 @@ export const pagesRoutes: Routes = [
     data:{role:['ADMIN']}
    },
    {
+    path:'formuser',
+    component: FormUserComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
+    path:'formuser/:id',
+    component: FormUserComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
+    path:'listar-apoderados',
+    component: UserApoderadoComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+    path: 'listar-furgones',
+    component: FurgonComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+    path: 'listar-transportistas',
+    component: UserTransportistaComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
     path: 'mensualidades',
     component: MensualidadComponent,
     canActivate: [roleGuard],
     data:{role: ['ADMIN']}
+   },
+   {
+    path: 'formmensualidad',
+    component: FormMensualidadComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+    path: 'formfurgon',
+    component: FormFurgonComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
+    path: 'formfurgon/:id',
+    component: FormFurgonComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
+    path: 'formmensualidad/:id',
+    component: FormMensualidadComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
    },
    {
     path:'my-mensualidades',

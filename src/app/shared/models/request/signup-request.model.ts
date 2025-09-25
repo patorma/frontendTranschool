@@ -1,7 +1,7 @@
 
 
 export interface SignupRequest {
-  id: number;
+  id?: number;
   nombres: string;
   apellidos: string;
   comuna: string;

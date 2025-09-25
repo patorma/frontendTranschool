@@ -84,6 +84,22 @@ export class AuthService {
       return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/page`,{ params });
   }
 
+  getAllApoderados(page: number,size:number):Observable<PaginatedResponse>{
+     //le envia los parametros de paginacion
+       const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/apoderados/page`,{ params });
+  }
+
+  getAllTransportistas(page: number,size:number):Observable<PaginatedResponse>{
+         //le envia los parametros de paginacion
+       const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+       return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/transportistas/page`,{ params });
+  }
+
    findByIdUser(id:number):Observable<Profile>{
       return this.http.get<Profile>(`${this.baseURLAdmin}/findUser/${id}`);
    }

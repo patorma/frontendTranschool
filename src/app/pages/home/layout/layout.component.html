@@ -7,6 +7,12 @@
     <button *ngIf="isAdmin" mat-button routerLink="/pages/users" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       Usuarios
     </button>
+   <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-apoderados" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Apoderados
+    </button>
+   <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-transportistas" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Transportistas
+    </button>
     <button
       *ngIf="isAdmin"
       mat-button

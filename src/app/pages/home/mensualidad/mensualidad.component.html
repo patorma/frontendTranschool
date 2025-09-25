@@ -1,10 +1,10 @@
 <div class="catalog-container">
   <!-- Sidebar con botón para crear -->
   <div class="sidebar">
-    <h3>Opciones</h3>
+    <h3>Opciones2</h3>
     <ul>
       <!-- <li>
-        <button mat-raised-button color="primary" (click)="createUser()">Crear Usuario</button>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/formmensualidad']">Crear Mensualidad</button>
       </li> -->
     </ul>
   </div>
@@ -33,6 +33,7 @@
               <p><strong>Enabled:</strong> {{ mensualidad.enabled }}</p>
             </mat-card-content>
             <mat-card-actions>
+              <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formmensualidad',mensualidad.id]">Editar</button> -->
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
               <button mat-stroked-button color="warn" (click)="deleteMensualidad(mensualidad.id)">Eliminar</button>
             </mat-card-actions>

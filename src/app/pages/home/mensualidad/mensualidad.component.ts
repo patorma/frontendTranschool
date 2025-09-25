@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MensualidadService } from '../../../shared/services/mensualidad.service';
 import { MensualidadResponse } from '../../../shared/models/response/mensualidad-response.model';
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-mensualidad',
   standalone: true,
@@ -20,8 +22,9 @@ import { MensualidadResponse } from '../../../shared/models/response/mensualidad
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    RouterLink
+],
   templateUrl: './mensualidad.component.html',
   styleUrl: './mensualidad.component.css',
 })

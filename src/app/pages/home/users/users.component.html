@@ -3,9 +3,9 @@
   <div class="sidebar">
     <h3>Opciones</h3>
     <ul>
-      <!-- <li>
-        <button mat-raised-button color="primary" (click)="createUser()">Crear Usuario</button>
-      </li> -->
+      <li>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/formuser']">Crear Transportista</button>
+      </li>
     </ul>
   </div>
 
@@ -31,6 +31,8 @@
               <p><strong>ID:</strong> {{ user.id }}</p>
             </mat-card-content>
             <mat-card-actions>
+                <!-- <button mat-raised-button color="primary" [routerLink]="['/pages/formmensualidad',{userId:user.id}]">Asignar Mensualidad</button> -->
+              <button mat-stroked-button color="primary" [routerLink]="['/pages/formuser',user.id]">Editar</button>
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
               <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button>
             </mat-card-actions>
