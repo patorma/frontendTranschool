@@ -1,1 +1,42 @@
-<h1>Crear furgon</h1>
+<h1>Asignar furgon a transportista</h1>
+
+<mat-card>
+  <form [formGroup]="furgonForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campo oculto para enviar el ID del apoderado -->
+    <input type="hidden" formControlName="usuarioTransportistaId">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Patente</mat-label>
+      <input matInput type="text" formControlName="patente" required />
+      @if(controlHasError('patente', 'required')){
+        <mat-error>La patente es obligatoria</mat-error>
+      }
+    </mat-form-field>
+ <mat-form-field appearance="outline">
+  <mat-label>Descripción</mat-label>
+  <textarea matInput formControlName="descripcion" rows="3" required></textarea>
+  @if(controlHasError('descripcion', 'required')){
+    <mat-error>La descripción es obligatoria</mat-error>
+  }
+ </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Fecha Vencimiento</mat-label>
+      <input matInput type="date" formControlName="fechaVencimiento">
+    </mat-form-field> -->
+
+       <!-- <mat-form-field appearance="outline">
+      <mat-label>Fecha Vencimiento</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fechaVencimiento">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field> -->
+
+
+
+    <button mat-raised-button color="primary" type="submit">
+      Guardar Furgon
+    </button>
+  </form>
+</mat-card>
+

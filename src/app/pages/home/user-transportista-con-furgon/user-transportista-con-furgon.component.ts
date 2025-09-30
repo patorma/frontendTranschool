@@ -7,12 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
-import { FurgonResponse } from '../../../shared/models/response/furgon-response.model';
+import { Profile } from '../../../shared/models/response/profile-response.model';
 
 @Component({
-  selector: 'app-furgon',
+  selector: 'app-user-transportista-con-furgon',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,35 +25,36 @@ import { FurgonResponse } from '../../../shared/models/response/furgon-response.
     ReactiveFormsModule,
     RouterLink
   ],
-  templateUrl: './furgon.component.html' ,
-  styleUrl: './furgon.component.css',
+  templateUrl: './user-transportista-con-furgon.component.html',
+  styleUrl: './user-transportista-con-furgon.component.css',
 
 })
-export class FurgonComponent {
+export class UserTransportistaConFurgonComponent {
 
   private authService = inject(AuthService);
+  private router = inject(Router);
+  transportistasConFurgon: Profile[] = [];
+  totalElements: number = 0;
+  pageSize: number = 9;
+  currentPage: number = 0;
 
-  furgones: FurgonResponse[] = [];
-   totalElements: number = 0;
-   pageSize: number = 9;
-   currentPage: number = 0;
+  ngOnInit(): void {
+    this.getTransportistasConFurgon()
 
-     ngOnInit(): void{
-      this.getFurgones();
   }
 
-  getFurgones(){
-    this.authService.getAllFurgones(this.currentPage,this.pageSize).subscribe(
-      response => {
-        this.furgones = response.content;
+  getTransportistasConFurgon():void {
+    this.authService.getAllTransportistas(this.currentPage,this.pageSize).subscribe(
+      response =>{
+        this.transportistasConFurgon = response.content;
         this.totalElements = response.totalElements;
       }
     )
   }
 
-  onPageChange(event: PageEvent) {
+    onPageChange(event: PageEvent) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.getFurgones();
+    this.getTransportistasConFurgon();
   }
 }

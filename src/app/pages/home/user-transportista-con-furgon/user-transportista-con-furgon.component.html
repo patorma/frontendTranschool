@@ -1,4 +1,4 @@
-<h1>Lista de apoderados</h1>
+<h1>Lista de Transportistas </h1>
 
 <div class="catalog-container">
   <!-- Sidebar con botón para crear -->
@@ -14,26 +14,26 @@
   <!-- Contenido principal -->
   <div class="main-content">
     <div class="result-count">
-      <p>{{ totalElements }} usuarios encontrados</p>
+      <p>{{ totalElements }} Transportistas encontrados</p>
     </div>
 
     <!-- Grid de usuarios -->
     <div class="card-grid">
-      @for (apoderado of apoderados; track $index) {
+      @for (transportista of transportistasConFurgon; track $index) {
         <div class="card-item">
-          <mat-card class="apoderado-card">
+          <mat-card class="transportista-card">
             <mat-card-header>
-              <mat-card-title>{{ apoderado.nombres }} {{apoderado.apellidos}}</mat-card-title>
-              <mat-card-subtitle>{{ apoderado.email }}</mat-card-subtitle>
+              <mat-card-title>{{ transportista.nombres }} {{transportista.apellidos}}</mat-card-title>
+              <mat-card-subtitle>{{ transportista.email }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <p><strong>Rol:</strong>  {{ apoderado.role }}</p>
-              <p><strong>Comuna:</strong> {{ apoderado.comuna }}</p>
-              <p><strong>Telefono:</strong> {{ apoderado.telefono }}</p>
-              <p><strong>ID:</strong> {{ apoderado.id }}</p>
+              <p><strong>Rol:</strong>  {{ transportista.role }}</p>
+              <p><strong>Comuna:</strong> {{ transportista.comuna }}</p>
+              <p><strong>Telefono:</strong> {{ transportista.telefono }}</p>
+              <p><strong>ID:</strong> {{ transportista.id }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary" [routerLink]="['/pages/formmensualidad',{usuarioId:apoderado.id}]">Asignar Mensualidad</button>
+                <!-- <button mat-raised-button color="primary" [routerLink]="['/pages/formfurgon',{transportistaId:transportista.id}]">Asignar furgon</button> -->
               <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formuser',apoderado.id]">Editar</button> -->
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
               <!-- <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button> -->
@@ -41,7 +41,7 @@
           </mat-card>
         </div>
       } @empty {
-        <p>No hay apoderados registrados</p>
+        <p>No hay transportistas registrados</p>
       }
     </div>
 

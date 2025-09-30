@@ -44,7 +44,7 @@ export class UserTransportistaComponent {
   }
 
   getTransportistas():void {
-     this.authService.getAllTransportistas(this.currentPage,this.pageSize).subscribe(
+     this.authService.getAllTransportistasSinFurgon(this.currentPage,this.pageSize).subscribe(
       response => {
         this.transportistas = response.content;
         this.totalElements = response.totalElements;

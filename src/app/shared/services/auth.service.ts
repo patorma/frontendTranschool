@@ -10,6 +10,9 @@ import { Profile } from '../models/response/profile-response.model';
 import { Role } from '../models/enums/role.enum';
 import { PaginatedResponse } from '../models/response/paginated-response.model';
 import { DeleteResponse } from '../models/response/delete-response.model';
+import { PaginatedFurgonResponse } from '../models/response/paginated-furgon-response';
+import { FurgonRequest } from '../models/request/furgon-request.model';
+import { FurgonResponse } from '../models/response/furgon-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +53,9 @@ export class AuthService {
     return this.http.post<Profile>(`${this.baseURLAdmin}/sign-up`, signupRequest);
   }
 
+  crearFurgon(furgonRequest: FurgonRequest):Observable<FurgonResponse>{
+    return this.http.post<FurgonResponse>(`${this.baseURLAdmin}/furgon`,furgonRequest);
+  }
 
 
 
@@ -98,6 +104,23 @@ export class AuthService {
       .set('page', page.toString())
       .set('size', size.toString())
        return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/transportistas/page`,{ params });
+  }
+
+  //lista todos los furgones
+  getAllFurgones(page: number,size:number):Observable<PaginatedFurgonResponse>{
+      const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+
+      return this.http.get<PaginatedFurgonResponse>(`${this.baseURLAdmin}/furgones/page`,{ params });
+  }
+
+  getAllTransportistasSinFurgon(page: number,size:number):Observable<PaginatedResponse>{
+     //le envia los parametros de paginacion
+       const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+       return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios-transportistas/sin-furgon/page`,{params});
   }
 
    findByIdUser(id:number):Observable<Profile>{

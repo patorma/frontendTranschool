@@ -1,1 +1,33 @@
 <h1>Hola mensualidad formulario</h1>
+<h1>Asignar Mensualidad</h1>
+
+<mat-card>
+  <form [formGroup]="mensualidadForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campo oculto para enviar el ID del apoderado -->
+    <input type="hidden" formControlName="usuarioId">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Monto</mat-label>
+      <input matInput type="number" formControlName="monto">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Fecha Vencimiento</mat-label>
+      <input matInput type="date" formControlName="fechaVencimiento">
+    </mat-form-field> -->
+
+       <mat-form-field appearance="outline">
+      <mat-label>Fecha Vencimiento</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fechaVencimiento">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="primary" type="submit">
+      Guardar Mensualidad
+    </button>
+  </form>
+</mat-card>

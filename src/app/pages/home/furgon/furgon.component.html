@@ -1,0 +1,58 @@
+<div class="catalog-container">
+  <!-- Sidebar con botón para crear -->
+  <div class="sidebar">
+    <h3>Lista de Furgones</h3>
+    <ul>
+      <!-- <li>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/formfurgon']">Crear furgon</button>
+      </li> -->
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <div class="result-count">
+      <p>{{ totalElements }} Furgones encontrados</p>
+    </div>
+
+    <!-- Grid de usuarios -->
+    <div class="card-grid">
+      @for (furgon of furgones; track $index) {
+        <div class="card-item">
+          <mat-card class="user-card">
+            <mat-card-header>
+              <mat-card-title>Ficha técnica del furgon</mat-card-title>
+              <mat-card-subtitle>Datos</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p><strong>ID de Furgon:</strong>  {{  furgon.id  }}</p>
+              <p><strong>Patente:</strong>  {{  furgon.patente  }}</p>
+              <!-- <p><strong>Rol:</strong>  {{ furgon.usuario.role }}</p> -->
+              <p><strong>Descripcion:</strong> {{ furgon.descripcion }}</p>
+              <p><strong>Estado:</strong> {{ furgon.enabled }}</p>
+              <p><strong> Conductor :</strong> {{ furgon.usuarioTransportista.nombres }} {{furgon.usuarioTransportista.apellidos}}</p>
+              <p><strong>Rol del conductor:</strong> {{ furgon.usuarioTransportista.role}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formfurgon',furgon.id]">Editar</button> -->
+              <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
+              <!-- <button mat-stroked-button color="warn" (click)="deletefurgon(furgon.id)">Eliminar</button> -->
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      } @empty {
+        <p>No hay furgones registrados</p>
+      }
+    </div>
+
+    <!-- Paginador -->
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
+
+

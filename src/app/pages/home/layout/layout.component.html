@@ -11,7 +11,14 @@
       Apoderados
     </button>
    <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-transportistas" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Transportistas sin furgon
+    </button>
+    <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-transportistas-con-furgon" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }">
       Transportistas
+    </button>
+    <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-furgones" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }"
+    >
+      Furgones
     </button>
     <button
       *ngIf="isAdmin"

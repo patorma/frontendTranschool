@@ -12,6 +12,7 @@ import { UserApoderadoComponent } from "./home/user-apoderado/user-apoderado.com
 import { UserTransportistaComponent } from "./home/user-transportista/user-transportista.component";
 import { FurgonComponent } from "./home/furgon/furgon.component";
 import { FormFurgonComponent } from "./home/form-furgon/form-furgon.component";
+import { UserTransportistaConFurgonComponent } from "./home/user-transportista-con-furgon/user-transportista-con-furgon.component";
 
 
 
@@ -53,6 +54,13 @@ export const pagesRoutes: Routes = [
    {
     path: 'listar-transportistas',
     component: UserTransportistaComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+    path: 'listar-transportistas-con-furgon',
+    component: UserTransportistaConFurgonComponent,
     canActivate: [roleGuard],
     data: {role: ['ADMIN']}
    },
