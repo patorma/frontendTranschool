@@ -7,13 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { RouterLink } from '@angular/router';
 import { MensualidadService } from '../../../shared/services/mensualidad.service';
 import { MensualidadResponse } from '../../../shared/models/response/mensualidad-response.model';
-import { RouterLink } from '@angular/router';
-import { Estado } from '../../../shared/models/enums/estado.enum';
 
 @Component({
-  selector: 'app-mensualidad',
+  selector: 'app-mensualidad-sin-pago',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,16 +24,13 @@ import { Estado } from '../../../shared/models/enums/estado.enum';
     MatIconModule,
     ReactiveFormsModule,
     RouterLink
-],
-  templateUrl: './mensualidad.component.html',
-  styleUrl: './mensualidad.component.css',
+  ],
+  templateUrl: './mensualidad-sin-pago.component.html',
+  styleUrl: './mensualidad-sin-pago.component.css',
+
 })
-export class MensualidadComponent {
+export class MensualidadSinPagoComponent {
    private mensualidadService = inject(MensualidadService);
-
-   estado = Estado;
-   
-
 
    mensualidades: MensualidadResponse[] = [];
    totalElements: number = 0;
@@ -42,11 +38,11 @@ export class MensualidadComponent {
    currentPage: number = 0;
 
   ngOnInit(): void{
-      this.getMensualidades();
+      this.getMensualidadesSinPago();
   }
 
-  getMensualidades(){
-    this.mensualidadService.getAllMensualidadesByAdmin(this.currentPage,this.pageSize).subscribe(
+  getMensualidadesSinPago(){
+    this.mensualidadService.getAllMensualidadesByAdminSinPago(this.currentPage,this.pageSize).subscribe(
       response =>{
          this.mensualidades = response.content;
          this.totalElements = response.totalElements;
@@ -56,19 +52,6 @@ export class MensualidadComponent {
     onPageChange(event: PageEvent) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.getMensualidades();
+    this.getMensualidadesSinPago();
   }
-
-  deleteMensualidad(mensualidadId: number) {
-  if (confirm('¿Estás seguro de eliminar esta mensualidad?')) {
-    this.mensualidadService.deleteMensualidadByAdmin(mensualidadId).subscribe(() => {
-      this.getMensualidades(); // refresca lista
-    });
-  }
-  }
-
-  // get isPago(){
-  //   return this.mensualidades.
-  // }
-
 }

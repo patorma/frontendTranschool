@@ -1,10 +1,10 @@
 <div class="catalog-container">
   <!-- Sidebar con botón para crear -->
   <div class="sidebar">
-    <h3>Lista de Mensualidades de usuarios</h3>
+    <h3>Lista de Mensualidades pendientes</h3>
     <ul>
       <li>
-        <button mat-raised-button color="primary" [routerLink]="['/pages/mesnsualiddaes-sin-pago']"> Mensualidades sin pago</button>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/mensualidades']">Atras</button>
       </li>
     </ul>
   </div>
@@ -12,7 +12,7 @@
   <!-- Contenido principal -->
   <div class="main-content">
     <div class="result-count">
-      <p>{{ totalElements }} Mensualidades encontrados</p>
+      <p>{{ totalElements }} Mensualidades pendientes encontradas</p>
     </div>
 
     <!-- Grid de usuarios -->
@@ -30,17 +30,12 @@
               <p><strong>Monto a pagar:</strong>{{ mensualidad.monto }}</p>
               <p><strong>Fecha de Vencimiento:</strong>{{ mensualidad.fechaVencimiento }} </p>
               <p><strong>Estado:</strong> {{ mensualidad.estado }}</p>
-              <p><strong>Estado:</strong> {{ mensualidad.enabled }}</p>
-              <!-- <p><strong>Enabled:</strong> {{ mensualidad.enabled }}</p> -->
+              <p><strong>Enabled:</strong> {{ mensualidad.enabled }}</p>
             </mat-card-content>
             <mat-card-actions>
-                @if(mensualidad.estado === estado.PENDIENTE  ){
-              <button mat-stroked-button color="warn" >Registrar Pago</button>
-              }
               <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formmensualidad',mensualidad.id]">Editar</button> -->
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
-              <button mat-stroked-button color="warn" (click)="deleteMensualidad(mensualidad.id)">Eliminar</button>
-
+              <!-- <button mat-stroked-button color="warn" (click)="deleteMensualidad(mensualidad.id)">Eliminar</button> -->
             </mat-card-actions>
           </mat-card>
         </div>

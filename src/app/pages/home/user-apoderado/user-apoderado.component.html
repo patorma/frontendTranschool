@@ -3,7 +3,7 @@
 <div class="catalog-container">
   <!-- Sidebar con botón para crear -->
   <div class="sidebar">
-    <h3>Opciones</h3>
+    <!-- <h3>Opciones</h3> -->
     <!-- <ul>
       <li>
         <button mat-raised-button color="primary" [routerLink]="['/pages/formuser']">Crear Usuario</button>
@@ -14,44 +14,44 @@
   <!-- Contenido principal -->
   <div class="main-content">
     <div class="result-count">
-      <p>{{ totalElements }} usuarios encontrados</p>
+      <p><strong>{{ totalElements }} Apoderados encontrados</strong></p>
     </div>
 
     <!-- Grid de usuarios -->
-    <div class="card-grid">
-      @for (apoderado of apoderados; track $index) {
+    <div class="catalog-container">
+      <div class="card-grid">
+        @for (apoderado of apoderados; track $index) {
         <div class="card-item">
           <mat-card class="apoderado-card">
             <mat-card-header>
-              <mat-card-title>{{ apoderado.nombres }} {{apoderado.apellidos}}</mat-card-title>
-              <mat-card-subtitle>{{ apoderado.email }}</mat-card-subtitle>
+              <mat-card-title>Información de apoderado</mat-card-title>
+              <mat-card-subtitle>{{ apoderado.nombres }} {{apoderado.apellidos}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <p><strong>Rol:</strong>  {{ apoderado.role }}</p>
+              <p><strong>Rol:</strong> {{ apoderado.role }}</p>
               <p><strong>Comuna:</strong> {{ apoderado.comuna }}</p>
               <p><strong>Telefono:</strong> {{ apoderado.telefono }}</p>
               <p><strong>ID:</strong> {{ apoderado.id }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary" [routerLink]="['/pages/formmensualidad',{usuarioId:apoderado.id}]">Asignar Mensualidad</button>
+              <button mat-raised-button color="primary"
+                [routerLink]="['/pages/formmensualidad',{usuarioId:apoderado.id}]">Asignar Mensualidad</button>
               <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formuser',apoderado.id]">Editar</button> -->
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
               <!-- <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Eliminar</button> -->
             </mat-card-actions>
           </mat-card>
         </div>
-      } @empty {
+        } @empty {
         <p>No hay apoderados registrados</p>
-      }
+        }
+      </div>
     </div>
 
+
     <!-- Paginador -->
-    <mat-paginator
-      [length]="totalElements"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[9, 12, 24]"
+    <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[9, 12, 24]"
       (page)="onPageChange($event)">
     </mat-paginator>
   </div>
 </div>
-

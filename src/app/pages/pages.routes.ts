@@ -13,6 +13,7 @@ import { UserTransportistaComponent } from "./home/user-transportista/user-trans
 import { FurgonComponent } from "./home/furgon/furgon.component";
 import { FormFurgonComponent } from "./home/form-furgon/form-furgon.component";
 import { UserTransportistaConFurgonComponent } from "./home/user-transportista-con-furgon/user-transportista-con-furgon.component";
+import { MensualidadSinPagoComponent } from "./home/mensualidad-sin-pago/mensualidad-sin-pago.component";
 
 
 
@@ -68,6 +69,12 @@ export const pagesRoutes: Routes = [
     path: 'mensualidades',
     component: MensualidadComponent,
     canActivate: [roleGuard],
+    data:{role: ['ADMIN']}
+   },
+   {
+    path:'mesnsualiddaes-sin-pago',
+    component:MensualidadSinPagoComponent,
+     canActivate: [roleGuard],
     data:{role: ['ADMIN']}
    },
    {

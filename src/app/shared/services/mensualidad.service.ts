@@ -35,6 +35,13 @@ export class MensualidadService {
       .set('size', size.toString())
       return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLAdmin}/mensualidades/page`,{ params })
   }
+  getAllMensualidadesByAdminSinPago(page: number,size:number):Observable<PaginatedMensualidadResponse>{
+    //le envia los parametros de paginacion
+      const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      return this.http.get<PaginatedMensualidadResponse>(`${this.baseURLAdmin}/mensualidades/page/state?state_mensualidad=PENDIENTE`,{ params })
+  }
 
   findByEstadoMensualidadesAdmin(state_mensualidad:Estado, page: number, size: number): Observable<PaginatedMensualidadResponse>{
     const params = new HttpParams()

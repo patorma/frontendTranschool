@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MensualidadRequest } from '../../../shared/models/request/mensualidad-request.model';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AuthService } from '../../../shared/services/auth.service';
 @Component({
   selector: 'app-form-mensualidad',
   standalone: true,
@@ -35,6 +36,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 })
 export class FormMensualidadComponent {
   private route = inject(ActivatedRoute);
+  //  private authService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private mensualidadService = inject(MensualidadService);
@@ -80,6 +82,9 @@ export class FormMensualidadComponent {
   }
 }
 
+// get user(){
+//     return this.authService.getCurrentUser();
+//   }
 // Función para convertir Date a dd-MM-yyyy
 formatDate(date: Date | string): string {
   if (!date) return '';

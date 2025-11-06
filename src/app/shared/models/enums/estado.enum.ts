@@ -1,5 +1,5 @@
 export enum Estado {
-  PENDIENTE,
-  PAGADO,
-  MOROSO
+  PENDIENTE = 'PENDIENTE',
+  PAGADO = 'PAGADO',
+  MOROSO = 'MOROSO'
 }

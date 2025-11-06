@@ -1,6 +1,7 @@
 .register-container {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
   align-items: center;
   height: calc(100vh - 64px); /* Ajustar según la altura del navbar */
   width: 100%;

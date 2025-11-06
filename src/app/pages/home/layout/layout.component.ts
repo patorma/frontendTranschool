@@ -43,7 +43,9 @@ export class LayoutComponent {
     return this.user?.role === Role.APODERADO;
   }
 
-
+get isTransportista(){
+  return  this.user?.role === Role.TRANSPORTISTA;
+}
 
   logout(){
     this.authService.logout();

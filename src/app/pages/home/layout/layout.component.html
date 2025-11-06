@@ -2,7 +2,7 @@
   <span>Administracion de Furgones</span>
   <ng-container *ngIf="user; else showLogin">
     <span class="ms-3">
-      Hola {{ isAdmin ? 'Admin' : 'Apoderado' }} {{ user.nombres }} {{ user.apellidos }}
+      Hola {{ isAdmin ? 'Admin' : 'Apoderado' }}
     </span>
     <button *ngIf="isAdmin" mat-button routerLink="/pages/users" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       Usuarios
