@@ -14,6 +14,7 @@ import { FurgonComponent } from "./home/furgon/furgon.component";
 import { FormFurgonComponent } from "./home/form-furgon/form-furgon.component";
 import { UserTransportistaConFurgonComponent } from "./home/user-transportista-con-furgon/user-transportista-con-furgon.component";
 import { MensualidadSinPagoComponent } from "./home/mensualidad-sin-pago/mensualidad-sin-pago.component";
+import { PagoComponet } from "./home/pago/pago.component.";
 
 
 
@@ -99,6 +100,13 @@ export const pagesRoutes: Routes = [
    {
     path: 'formmensualidad/:id',
     component: FormMensualidadComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+     path:'pago/:id',
+     component: PagoComponet,
     canActivate: [roleGuard],
     data: {role: ['ADMIN']}
    },

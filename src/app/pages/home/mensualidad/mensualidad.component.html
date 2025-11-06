@@ -34,9 +34,9 @@
               <!-- <p><strong>Enabled:</strong> {{ mensualidad.enabled }}</p> -->
             </mat-card-content>
             <mat-card-actions>
-                @if(mensualidad.estado === estado.PENDIENTE  ){
+                <!-- @if(mensualidad.estado === estado.PENDIENTE  ){
               <button mat-stroked-button color="warn" >Registrar Pago</button>
-              }
+              } -->
               <!-- <button mat-stroked-button color="primary" [routerLink]="['/pages/formmensualidad',mensualidad.id]">Editar</button> -->
               <!-- <button mat-stroked-button color="primary" (click)="editUser(user.id)">Editar</button> -->
               <button mat-stroked-button color="warn" (click)="deleteMensualidad(mensualidad.id)">Eliminar</button>
