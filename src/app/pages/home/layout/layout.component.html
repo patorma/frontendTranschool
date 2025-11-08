@@ -30,6 +30,16 @@
       Mensualidades
     </button>
     <button
+      *ngIf="isAdmin"
+      mat-button
+      routerLink="/pages/lista-mensualidades"
+      class="ms-3"
+       routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Pagos
+    </button>
+    <button
        *ngIf="isApoderado"
        mat-button
        routerLink="/pages/my-mensualidades"

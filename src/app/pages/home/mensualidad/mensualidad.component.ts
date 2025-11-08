@@ -33,7 +33,7 @@ export class MensualidadComponent {
    private mensualidadService = inject(MensualidadService);
 
    estado = Estado;
-   
+
 
 
    mensualidades: MensualidadResponse[] = [];

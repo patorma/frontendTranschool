@@ -1,0 +1,45 @@
+<div class="catalog-container">
+   <div class="sidebar">
+    <h3>Lista de Pagos de usuarios</h3>
+    <!-- <ul>
+      <li>
+        <button mat-raised-button color="primary" [routerLink]="['/pages/mesnsualiddaes-sin-pago']"> Mensualidades sin pago</button>
+      </li>
+    </ul> -->
+  </div>
+    <div class="main-content">
+        <div class="result-count">
+          <p>{{ totalElements }} Pagos encontrados</p>
+        </div>
+
+     <div class="card-grid">
+       @for(pago of pagos; track $index){
+            <div class="card-item">
+              <mat-card class="user-card">
+                  <mat-card-header>
+                      <mat-card-title>Detalle de pago de apoderado</mat-card-title>
+                       <mat-card-subtitle>Pago de Mensualidad</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p><strong>ID de Pago:</strong>  {{  pago.id  }}</p>
+                    <p><strong>Mensualidad:</strong>  {{  pago.mensualidad.monto  }}</p>
+                    <p><strong>Monto Total Pagado:</strong>  {{  pago.montoPagado  }}</p>
+                    <p><strong>Fecha de vencimiento:</strong>  {{  pago.mensualidad.fechaVencimiento  }}</p>
+                    <p><strong>Fecha de Pago:</strong>  {{  pago.fechaPago }}</p>
+                    <p><strong>Apoderado:</strong>  {{  pago.mensualidad.usuario.nombres }} {{  pago.mensualidad.usuario.apellidos }}</p>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+       }@empty {
+        <p>No hay Pagos registrados!!!!!/p>
+      }
+     </div>
+
+     <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+</div>
+</div>

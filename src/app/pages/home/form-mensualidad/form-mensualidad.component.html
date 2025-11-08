@@ -10,6 +10,9 @@
     <mat-form-field appearance="outline">
       <mat-label>Monto</mat-label>
       <input matInput type="number" formControlName="monto">
+        @if(controlHasError('monto', 'required')){
+			       <mat-error>El monto es obligatorio</mat-error>
+		        }
     </mat-form-field>
 
     <!-- <mat-form-field appearance="outline">
@@ -20,6 +23,9 @@
        <mat-form-field appearance="outline">
       <mat-label>Fecha Vencimiento</mat-label>
       <input matInput [matDatepicker]="pickerFin" formControlName="fechaVencimiento">
+        @if(controlHasError('fechaVencimiento', 'required')){
+			       <mat-error>La fecha de vencimiento es obligatoria</mat-error>
+		        }
       <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
       <mat-datepicker #pickerFin></mat-datepicker>
     </mat-form-field>

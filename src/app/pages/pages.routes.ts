@@ -14,7 +14,8 @@ import { FurgonComponent } from "./home/furgon/furgon.component";
 import { FormFurgonComponent } from "./home/form-furgon/form-furgon.component";
 import { UserTransportistaConFurgonComponent } from "./home/user-transportista-con-furgon/user-transportista-con-furgon.component";
 import { MensualidadSinPagoComponent } from "./home/mensualidad-sin-pago/mensualidad-sin-pago.component";
-import { PagoComponet } from "./home/pago/pago.component.";
+import { PagoComponent } from "./home/pago/pago.component.";
+import { ListarPagosComponent } from "./home/listar-pagos/listar-pagos.component";
 
 
 
@@ -79,6 +80,12 @@ export const pagesRoutes: Routes = [
     data:{role: ['ADMIN']}
    },
    {
+     path:'lista-mensualidades',
+     component: ListarPagosComponent,
+     canActivate: [roleGuard],
+     data:{role: ['ADMIN']}
+   },
+   {
     path: 'formmensualidad',
     component: FormMensualidadComponent,
     canActivate: [roleGuard],
@@ -105,8 +112,8 @@ export const pagesRoutes: Routes = [
    },
 
    {
-     path:'pago/:id',
-     component: PagoComponet,
+     path:'pago/:mensualidadId',
+     component: PagoComponent,
     canActivate: [roleGuard],
     data: {role: ['ADMIN']}
    },

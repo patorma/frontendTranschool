@@ -97,5 +97,7 @@ formatDate(date: Date | string): string {
   return `${day}-${month}-${year}`;
 }
 
-
+  controlHasError(controlName: string, errorName: string): boolean {
+    return this.mensualidadForm.get(controlName)?.hasError(errorName) ?? false;
+  }
 }
