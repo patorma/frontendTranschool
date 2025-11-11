@@ -30,4 +30,8 @@ export class RecorridoService {
      return this.http.post<RecorridoResponse>(`${this.baseURLAdmin}/recorrido`,recorridoRequest);
   }
 
+  updateRecorrido(id:number,recorridoRequest: RecorridoRequest):Observable<RecorridoResponse>{
+     return this.http.put<RecorridoResponse>(`${this.baseURLAdmin}/actualizar/recorrido/${id}`,recorridoRequest);
+  }
+
 }

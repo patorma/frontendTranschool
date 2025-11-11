@@ -16,6 +16,8 @@ import { UserTransportistaConFurgonComponent } from "./home/user-transportista-c
 import { MensualidadSinPagoComponent } from "./home/mensualidad-sin-pago/mensualidad-sin-pago.component";
 import { PagoComponent } from "./home/pago/pago.component.";
 import { ListarPagosComponent } from "./home/listar-pagos/listar-pagos.component";
+import { ListarRecorridosComponent } from "./home/listar-recorridos/listar-recorridos.component";
+import { FormRecorridoComponent } from "./home/form-recorrido/form-recorrido.component";
 
 
 
@@ -41,10 +43,28 @@ export const pagesRoutes: Routes = [
     data: {role: ['ADMIN']}
    },
    {
+    path:'formrecorrido',
+    component: FormRecorridoComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
+    path:'formrecorrido/:id',
+    component: FormRecorridoComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+   {
     path:'listar-apoderados',
     component: UserApoderadoComponent,
     canActivate: [roleGuard],
     data: {role: ['ADMIN']}
+   },
+   {
+    path: 'listar-recorridos',
+    component: ListarRecorridosComponent,
+    canActivate:[roleGuard],
+    data:{role:['ADMIN']}
    },
 
    {

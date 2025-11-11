@@ -21,6 +21,16 @@
       Furgones
     </button>
     <button
+     *ngIf="isAdmin"
+      mat-button
+      routerLink="/pages/listar-recorridos"
+      class="ms-3"
+       routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Recorridos
+    </button>
+    <button
       *ngIf="isAdmin"
       mat-button
       routerLink="/pages/mensualidades"
