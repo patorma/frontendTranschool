@@ -1,1 +1,33 @@
-<p>form-recorrido works!</p>
+<div class="register-container">
+  <div class="register-box">
+     <h2 class="fw-bold text-center">
+       {{ isEditing ? 'Editar recorrido' : 'Registrar Recorrido' }}
+     </h2>
+      <form [formGroup]="recorridoForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+             <mat-label>Origen</mat-label>
+             <input matInput formControlName="origen" type="text" required />
+             @if(controlHasError('origen', 'required')){
+               <mat-error>El origen es obligatorio</mat-error>
+             }
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Destino:</mat-label>
+              <input matInput formControlName="destino" type="text" required />
+              @if(controlHasError('destino', 'required')){
+                 <mat-error>El destino es obligatorio</mat-error>
+              }
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Descripcion:</mat-label>
+              <textarea matInput formControlName="descripcion" rows="3" required></textarea>
+              @if(controlHasError('descripcion', 'required')){
+                <mat-error>La descripción del recorrido es obligatoria</mat-error>
+              }
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!recorridoForm.valid" class="btn-login">
+             {{ isEditing ? 'Guardar Cambios' : 'Registrar Recorrido' }}
+          </button>
+      </form>
+  </div>
+</div>

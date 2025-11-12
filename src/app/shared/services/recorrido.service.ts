@@ -34,4 +34,7 @@ export class RecorridoService {
      return this.http.put<RecorridoResponse>(`${this.baseURLAdmin}/actualizar/recorrido/${id}`,recorridoRequest);
   }
 
+  findByIdRecorridoByAdmin(id:number): Observable<RecorridoResponse>{
+    return this.http.get<RecorridoResponse>(`${this.baseURLAdmin}/recorrido/${id}`);
+  }
 }
