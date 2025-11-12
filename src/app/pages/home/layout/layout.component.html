@@ -61,7 +61,7 @@
     </button>
     <span class="spacer"></span>
     <button mat-button [matMenuTriggerFor]="userMenu">
-      <mat-icon>account_circle</mat-icon> {{ user.nombres }}
+      <mat-icon>account_circle</mat-icon> {{ user.nombres }} {{user.apellidos}} {{user.id}}
     </button>
     <mat-menu #userMenu>
       <button mat-menu-item (click)="logout()">
