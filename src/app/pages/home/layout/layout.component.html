@@ -59,6 +59,16 @@
       >
        Mis mensualidades
     </button>
+    <button
+       *ngIf="isApoderado"
+       mat-button
+       routerLink="/pages/my-mensualidades"
+       class="ms-3"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }"
+      >
+       Mis estudiantes
+    </button>
     <span class="spacer"></span>
     <button mat-button [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon> {{ user.nombres }} {{user.apellidos}} {{user.id}}
