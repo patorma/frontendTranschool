@@ -1,10 +1,11 @@
-import { Profile } from "./profile-response.model";
+import { Profile } from './profile-response.model';
 
-export interface EstudianteResponse{
+export interface EstudianteResponse {
   id: number;
   nombres: string;
   apellidos: string;
   colegio: string;
+  email: string;
   fechaNacimiento: string;
   usuarioApoderado: Profile;
 }

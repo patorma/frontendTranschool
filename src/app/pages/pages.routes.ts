@@ -18,6 +18,7 @@ import { PagoComponent } from "./home/pago/pago.component.";
 import { ListarPagosComponent } from "./home/listar-pagos/listar-pagos.component";
 import { ListarRecorridosComponent } from "./home/listar-recorridos/listar-recorridos.component";
 import { FormRecorridoComponent } from "./home/form-recorrido/form-recorrido.component";
+import { ListarEstudiantesAdminComponent } from "./home/listar-estudiantes-admin/listar-estudiantes-admin.component";
 
 
 
@@ -66,7 +67,12 @@ export const pagesRoutes: Routes = [
     canActivate:[roleGuard],
     data:{role:['ADMIN']}
    },
-
+    {// listar estudiantes asociados a un apoderado by admin
+      path: 'listar-estdiantes-admin',
+      component: ListarEstudiantesAdminComponent,
+       canActivate:[roleGuard],
+       data:{role:['ADMIN']}
+    },
    {
     path: 'listar-furgones',
     component: FurgonComponent,

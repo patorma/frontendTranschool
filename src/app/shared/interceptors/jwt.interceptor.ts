@@ -8,6 +8,11 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
  const storageService = inject(StorageService);
   const authData = storageService.getAuthData(); // Obtener los datos de autenticación
 
+  //cuando viene esta url no se envia el token y los headers
+  // y se evita mandar un token expirado
+  if(req.url.includes('/auth/sign-in')){
+       return next(req);
+  }
   if(authData && authData.token){
         // Si hay un token de autenticación, clonar la solicitud y agregar el encabezado de autorización
     const authReq = req.clone({

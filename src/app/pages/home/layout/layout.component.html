@@ -7,15 +7,28 @@
     <button *ngIf="isAdmin" mat-button routerLink="/pages/users" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       Usuarios
     </button>
-   <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-apoderados" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+   <button *ngIf="isAdmin" mat-button  class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [matMenuTriggerFor]="apoderadoMenu">
       Apoderados
     </button>
-   <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-transportistas" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      Transportistas sin furgon
-    </button>
-    <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-transportistas-con-furgon" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }">
+    <mat-menu #apoderadoMenu>
+      <button mat-menu-item routerLink="/pages/listar-estdiantes-admin">
+         <mat-icon>school</mat-icon>Estudiantes
+      </button>
+      <button mat-menu-item routerLink="/pages/listar-apoderados">
+         <mat-icon>person</mat-icon>Lista apoderados
+      </button>
+    </mat-menu>
+   <button *ngIf="isAdmin" mat-button  class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [matMenuTriggerFor]="transportistasMenu">
       Transportistas
     </button>
+    <mat-menu #transportistasMenu>
+      <button mat-menu-item routerLink="/pages/listar-transportistas">
+        <mat-icon>airport_shuttle</mat-icon>Transportistas sin furgon
+      </button>
+      <button mat-menu-item routerLink="/pages/listar-transportistas-con-furgon">
+         <mat-icon>airport_shuttle</mat-icon>Transportistas con furgon
+      </button>
+    </mat-menu>
     <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-furgones" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }"
     >
       Furgones
@@ -33,12 +46,21 @@
     <button
       *ngIf="isAdmin"
       mat-button
-      routerLink="/pages/mensualidades"
       class="ms-3"
       routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }">
+      [routerLinkActiveOptions]="{ exact: true }"
+      [matMenuTriggerFor]="mensualidadesMenu"
+      >
       Mensualidades
     </button>
+    <mat-menu #mensualidadesMenu>
+       <button mat-menu-item routerLink="/pages/mensualidades">
+          <mat-icon> attach_money</mat-icon> Mensualiddaes pagadas
+       </button>
+       <button mat-menu-item routerLink="/pages/mesnsualiddaes-sin-pago">
+         <mat-icon>attach_money</mat-icon> Mensualiddaes sin pago
+       </button>
+    </mat-menu>
     <button
       *ngIf="isAdmin"
       mat-button
@@ -71,7 +93,7 @@
     </button>
     <span class="spacer"></span>
     <button mat-button [matMenuTriggerFor]="userMenu">
-      <mat-icon>account_circle</mat-icon> {{ user.nombres }} {{user.apellidos}} {{user.id}}
+      <mat-icon>account_circle</mat-icon> {{ user.nombres }} {{user.apellidos}}
     </button>
     <mat-menu #userMenu>
       <button mat-menu-item (click)="logout()">

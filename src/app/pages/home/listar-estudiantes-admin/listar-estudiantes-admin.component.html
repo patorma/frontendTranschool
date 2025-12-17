@@ -1,0 +1,39 @@
+<div class="catalog-container">
+     <div class="sidebar">
+          <h3>Lista de estudiantes </h3>
+     </div>
+     <div class="main-content">
+         <div class="result-count">
+          <p>{{ totalElements }} Estudiantes encontrados</p>
+        </div>
+         <div class="card-grid">
+          @for(estudiante of estudiantes; track $index){
+              <div class="card-item">
+                  <mat-card class="user-card">
+                    <mat-card-header>
+                      <mat-card-title>Detalle de un estudiante</mat-card-title>
+                       <mat-card-subtitle>Ficha Técnica de estudiante</mat-card-subtitle>
+                    </mat-card-header>
+                     <mat-card-content>
+                       <p><strong>ID de Estudiante:</strong>  {{  estudiante.id  }}</p>
+                       <p><strong>Nombres:</strong>  {{  estudiante.nombres }}</p>
+                       <p><strong>Apellidos:</strong>  {{  estudiante.apellidos }}</p>
+                       <p><strong>Colegio:</strong>  {{  estudiante.colegio }}</p>
+                       <p><strong>Fecha de nacimiento:</strong>  {{  estudiante.fechaNacimiento }}</p>
+                       <p><strong>Email:</strong>  {{  estudiante.email }}</p>
+                       <p><strong>Apoderado:</strong>  {{  estudiante.usuarioApoderado.nombres }} - {{estudiante.usuarioApoderado.apellidos}}</p>
+                     </mat-card-content>
+                  </mat-card>
+              </div>
+          }@empty{
+              <p>No hay Estudiantes registrados!!!!!/p>
+          }
+         </div>
+         <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
