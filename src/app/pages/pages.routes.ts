@@ -19,6 +19,7 @@ import { ListarPagosComponent } from "./home/listar-pagos/listar-pagos.component
 import { ListarRecorridosComponent } from "./home/listar-recorridos/listar-recorridos.component";
 import { FormRecorridoComponent } from "./home/form-recorrido/form-recorrido.component";
 import { ListarEstudiantesAdminComponent } from "./home/listar-estudiantes-admin/listar-estudiantes-admin.component";
+import { ListarEstudiantesByFurgonComponent } from "./home/listar-estudiantes-by-furgon/listar-estudiantes-by-furgon.component";
 
 
 
@@ -65,6 +66,12 @@ export const pagesRoutes: Routes = [
     path: 'listar-recorridos',
     component: ListarRecorridosComponent,
     canActivate:[roleGuard],
+    data:{role:['ADMIN']}
+   },
+   {
+    path:'listar-estudiantes-furgon/:idFurgon',
+    component: ListarEstudiantesByFurgonComponent,
+     canActivate:[roleGuard],
     data:{role:['ADMIN']}
    },
     {// listar estudiantes asociados a un apoderado by admin

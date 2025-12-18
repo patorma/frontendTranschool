@@ -10,9 +10,10 @@ import { Profile } from '../models/response/profile-response.model';
 import { Role } from '../models/enums/role.enum';
 import { PaginatedResponse } from '../models/response/paginated-response.model';
 import { DeleteResponse } from '../models/response/delete-response.model';
-import { PaginatedFurgonResponse } from '../models/response/paginated-furgon-response';
+import { PaginatedFurgonResponse } from '../models/response/paginated-furgon-response.model';
 import { FurgonRequest } from '../models/request/furgon-request.model';
 import { FurgonResponse } from '../models/response/furgon-response.model';
+import { PaginatedAsignacionEstudianteResponse } from '../models/response/paginated-asignacion-estudiante-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -115,6 +116,7 @@ export class AuthService {
       return this.http.get<PaginatedFurgonResponse>(`${this.baseURLAdmin}/furgones/page`,{ params });
   }
 
+
   getAllTransportistasSinFurgon(page: number,size:number):Observable<PaginatedResponse>{
      //le envia los parametros de paginacion
        const params = new HttpParams()
@@ -122,6 +124,14 @@ export class AuthService {
       .set('size', size.toString())
        return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios-transportistas/sin-furgon/page`,{params});
   }
+
+  //ver estudiantes de un furgon
+getEstdiantesbyFurgon(id:number,page: number,size:number,):Observable<PaginatedAsignacionEstudianteResponse>{
+   const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+    return this.http.get<PaginatedAsignacionEstudianteResponse>(`${this.baseURLAdmin}/asigFurgon/page/idFurgon?id=${id}`,{params})
+}
 
    findByIdUser(id:number):Observable<Profile>{
       return this.http.get<Profile>(`${this.baseURLAdmin}/findUser/${id}`);

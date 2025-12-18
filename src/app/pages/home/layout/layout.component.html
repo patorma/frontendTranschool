@@ -29,10 +29,15 @@
          <mat-icon>airport_shuttle</mat-icon>Transportistas con furgon
       </button>
     </mat-menu>
-    <button *ngIf="isAdmin" mat-button routerLink="/pages/listar-furgones" class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }"
+    <button *ngIf="isAdmin" mat-button  class="ms-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }" [matMenuTriggerFor]="furgonMenu"
     >
       Furgones
     </button>
+    <mat-menu #furgonMenu>
+       <button  mat-menu-item routerLink="/pages/listar-furgones">
+          <mat-icon>airport_shuttle</mat-icon>Lista de Furgones
+       </button>
+    </mat-menu>
     <button
      *ngIf="isAdmin"
       mat-button

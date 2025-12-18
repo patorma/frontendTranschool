@@ -1,17 +1,15 @@
-import { EstudianteResponse } from "./estudiante-response.model";
-
-export interface PaginatedEstudianteResponse{
-
+import { AsignacionEstudianteResponse } from './asignacion-estudiante-response.model';
+export interface PaginatedAsignacionEstudianteResponse{
     totalElements: number;
     totalPages: number;
     size: number;
-    content:EstudianteResponse[];
-     number: number;
-  sort: {
+    content: AsignacionEstudianteResponse[];
+    number: number;
+    sort: {
     empty: boolean;
     sorted: boolean;
     unsorted: boolean;
-  };
+    };
   first: boolean;
   last: boolean;
   numberOfElements: number;
@@ -27,6 +25,5 @@ export interface PaginatedEstudianteResponse{
     paged: boolean;
     unpaged: boolean;
   };
-  empty: boolean
-
+  empty: boolean;
 }

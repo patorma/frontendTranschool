@@ -1,0 +1,41 @@
+<div class="catalog-container">
+     <div class="sidebar">
+        <h3>Estudiantes del furgon</h3>
+     </div>
+     <div class="main-content">
+        <div class="result-count">
+          <p>{{ totalElements }} Estudiantes encontrados</p>
+        </div>
+        <div class="card-grid">
+          @for(estudianteByFurgon of estudiantesByFurgon; track $index){
+             <div class="card-item">
+                <mat-card class="user-card">
+                   <mat-card-header>
+                      <mat-card-title>Detalle de estudiante </mat-card-title>
+                      <mat-card-subtitle>Estudiante</mat-card-subtitle>
+                  </mat-card-header>
+                   <mat-card-content>
+                    <p><strong>ID de Asignacion:</strong>  {{  estudianteByFurgon.id  }}</p>
+                    <p><strong>Fecha de registro:</strong>  {{  estudianteByFurgon.fechaRegistro  }}</p>
+                    <p><strong>Nombres de estudiante:</strong>  {{  estudianteByFurgon.estudiante.nombres }}</p>
+                    <p><strong>Apellidos de estudiante:</strong>  {{  estudianteByFurgon.estudiante.apellidos }}</p>
+                    <p><strong>Origen recorrido:</strong>  {{  estudianteByFurgon.recorrido.origen }}</p>
+                    <p><strong>Destino recorrido:</strong>  {{  estudianteByFurgon.recorrido.destino }}</p>
+                    <p><strong>Descripción del recorrido:</strong>  {{  estudianteByFurgon.recorrido.descripcion }}</p>
+                    <p><strong>Colegio</strong>  {{  estudianteByFurgon.estudiante.colegio }}</p>
+                    <p><strong>Chofer:</strong>  {{  estudianteByFurgon.furgon.usuarioTransportista.nombres }}  {{  estudianteByFurgon.furgon.usuarioTransportista.apellidos }}</p>
+                   </mat-card-content>
+                </mat-card>
+             </div>
+          }@empty {
+        <p>No hay Estudiantes asignados!!!!!</p>
+      }
+      </div>
+      <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+     </div>
+</div>
