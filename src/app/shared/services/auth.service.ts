@@ -14,6 +14,8 @@ import { PaginatedFurgonResponse } from '../models/response/paginated-furgon-res
 import { FurgonRequest } from '../models/request/furgon-request.model';
 import { FurgonResponse } from '../models/response/furgon-response.model';
 import { PaginatedAsignacionEstudianteResponse } from '../models/response/paginated-asignacion-estudiante-response.model';
+import { AsignacionEstudianteRequest } from '../models/request/asignacion-estudiante-request.model';
+import { AsignacionEstudianteResponse } from '../models/response/asignacion-estudiante-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -132,6 +134,11 @@ getEstdiantesbyFurgon(id:number,page: number,size:number,):Observable<PaginatedA
       .set('size', size.toString())
     return this.http.get<PaginatedAsignacionEstudianteResponse>(`${this.baseURLAdmin}/asigFurgon/page/idFurgon?id=${id}`,{params})
 }
+
+//se crea la asignacion del estudiante 
+ createAsignacion(asignacionEstudianteRequest:AsignacionEstudianteRequest):Observable<AsignacionEstudianteResponse>{
+  return this.http.post<AsignacionEstudianteResponse>(`${this.baseURLAdmin}/asignacion`,asignacionEstudianteRequest);
+ }
 
    findByIdUser(id:number):Observable<Profile>{
       return this.http.get<Profile>(`${this.baseURLAdmin}/findUser/${id}`);
