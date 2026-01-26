@@ -4,7 +4,7 @@
      </div>
      <div class="main-content">
          <div class="result-count">
-          <p>{{ totalElements }} Estudiantes encontrados</p>
+         <app-register-counter [total]="totalElements" label="estudiantes encontrados"></app-register-counter>
         </div>
          <div class="card-grid">
           @for(estudiante of estudiantes; track $index){

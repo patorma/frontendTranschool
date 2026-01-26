@@ -14,7 +14,7 @@
   <!-- Contenido principal -->
   <div class="main-content">
     <div class="result-count">
-      <p><strong>{{ totalElements }} Apoderados encontrados</strong></p>
+       <app-register-counter [total]="totalElements" label="apoderados encontrados"></app-register-counter>
     </div>
 
     <!-- Grid de usuarios -->
@@ -31,6 +31,7 @@
               <p><strong>Rol:</strong> {{ apoderado.role }}</p>
               <p><strong>Comuna:</strong> {{ apoderado.comuna }}</p>
               <p><strong>Telefono:</strong> {{ apoderado.telefono }}</p>
+              <p><strong>Email:</strong> {{apoderado.email}} </p>
               <p><strong>ID:</strong> {{ apoderado.id }}</p>
             </mat-card-content>
             <mat-card-actions>

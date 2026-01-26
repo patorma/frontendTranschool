@@ -12,7 +12,8 @@
   <!-- Contenido principal -->
   <div class="main-content">
     <div class="result-count">
-      <p>{{ totalElements }} usuarios encontrados</p>
+      <app-register-counter [total]="totalElements" label="usuarios encontrados"></app-register-counter>
+      <!-- <p>{{ totalElements }} usuarios encontrados</p> -->
     </div>
 
     <!-- Grid de usuarios -->

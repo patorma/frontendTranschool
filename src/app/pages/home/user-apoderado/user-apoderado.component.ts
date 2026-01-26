@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Profile } from '../../../shared/models/response/profile-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-user-apoderado',
@@ -23,7 +24,8 @@ import { Profile } from '../../../shared/models/response/profile-response.model'
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './user-apoderado.component.html',
   styleUrl: './user-apoderado.component.css',
@@ -60,5 +62,5 @@ export class UserApoderadoComponent {
     this.getApoderados();
   }
 
-  
+
 }

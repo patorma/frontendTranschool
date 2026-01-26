@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 import { PagoService } from '../../../shared/services/Pago.service';
 import { PagoResponse } from '../../../shared/models/response/pago-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-listar-pagos',
@@ -23,7 +24,8 @@ import { PagoResponse } from '../../../shared/models/response/pago-response.mode
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './listar-pagos.component.html',
   styleUrl: './listar-pagos.component.css'

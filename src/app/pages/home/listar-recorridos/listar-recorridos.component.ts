@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router, RouterLink } from '@angular/router';
 import { RecorridoService } from '../../../shared/services/recorrido.service';
 import { RecorridoResponse } from '../../../shared/models/response/recorrido-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-listar-recorridos',
@@ -23,7 +24,8 @@ import { RecorridoResponse } from '../../../shared/models/response/recorrido-res
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './listar-recorridos.component.html',
   styleUrl: './listar-recorridos.component.css'

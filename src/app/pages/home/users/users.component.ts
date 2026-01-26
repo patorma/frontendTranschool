@@ -11,6 +11,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { Profile } from '../../../shared/models/response/profile-response.model';
 import { DeleteResponse } from '../../../shared/models/response/delete-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,8 @@ import { DeleteResponse } from '../../../shared/models/response/delete-response.
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',

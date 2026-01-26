@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 import { MensualidadService } from '../../../shared/services/mensualidad.service';
 import { MensualidadResponse } from '../../../shared/models/response/mensualidad-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-mensualidad-sin-pago',
@@ -23,7 +24,8 @@ import { MensualidadResponse } from '../../../shared/models/response/mensualidad
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './mensualidad-sin-pago.component.html',
   styleUrl: './mensualidad-sin-pago.component.css',

@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 import { EstudianteService } from '../../../shared/services/estudiante.service';
 import { EstudianteResponse } from '../../../shared/models/response/estudiante-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-listar-estudiantes-admin',
@@ -23,7 +24,8 @@ import { EstudianteResponse } from '../../../shared/models/response/estudiante-r
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './listar-estudiantes-admin.component.html',
   styleUrl: './listar-estudiantes-admin.component.css'

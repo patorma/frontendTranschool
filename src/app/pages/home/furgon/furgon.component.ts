@@ -10,6 +10,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { FurgonResponse } from '../../../shared/models/response/furgon-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-furgon',
@@ -23,7 +24,8 @@ import { FurgonResponse } from '../../../shared/models/response/furgon-response.
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RegisterCounterComponent
   ],
   templateUrl: './furgon.component.html' ,
   styleUrl: './furgon.component.css',

@@ -39,6 +39,9 @@
           @if(controlHasError('email', 'email')){
             <mat-error>Ingrese un email válido</mat-error>
           }
+          @if(controlHasError('email','pattern')){
+             <mat-error>Formato inválido</mat-error>
+          }
         </mat-form-field>
 
 		    <mat-form-field appearance="outline" class="full-width">

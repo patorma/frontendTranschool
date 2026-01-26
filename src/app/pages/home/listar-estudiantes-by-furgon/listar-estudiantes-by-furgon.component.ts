@@ -12,6 +12,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { AsignacionEstudianteResponse } from '../../../shared/models/response/asignacion-estudiante-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-listar-estudiantes-by-furgon',
@@ -27,7 +28,8 @@ import { AsignacionEstudianteResponse } from '../../../shared/models/response/as
     ReactiveFormsModule,
     RouterLink,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    RegisterCounterComponent
   ],
   templateUrl: './listar-estudiantes-by-furgon.component.html',
   styleUrl: './listar-estudiantes-by-furgon.component.css'

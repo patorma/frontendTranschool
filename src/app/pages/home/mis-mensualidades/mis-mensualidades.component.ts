@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MensualidadService } from '../../../shared/services/mensualidad.service';
 import { MensualidadResponse } from '../../../shared/models/response/mensualidad-response.model';
+import { RegisterCounterComponent } from '../../../shared/components/register-counter/register-counter.component';
 
 @Component({
   selector: 'app-mis-mensualidades',
@@ -21,7 +22,8 @@ import { MensualidadResponse } from '../../../shared/models/response/mensualidad
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RegisterCounterComponent
   ],
   templateUrl: './mis-mensualidades.component.html',
   styleUrl: './mis-mensualidades.component.css',
@@ -54,6 +56,6 @@ export class MisMensualidadesComponent {
     this.getMyMensualidades();
   }
 
-  
+
 
  }
