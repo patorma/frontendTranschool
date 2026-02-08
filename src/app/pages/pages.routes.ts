@@ -20,6 +20,7 @@ import { ListarRecorridosComponent } from "./home/listar-recorridos/listar-recor
 import { FormRecorridoComponent } from "./home/form-recorrido/form-recorrido.component";
 import { ListarEstudiantesAdminComponent } from "./home/listar-estudiantes-admin/listar-estudiantes-admin.component";
 import { ListarEstudiantesByFurgonComponent } from "./home/listar-estudiantes-by-furgon/listar-estudiantes-by-furgon.component";
+import { ListarTransportistasComponent } from "./home/listar-transportistas/listar-transportistas.component";
 
 
 
@@ -88,8 +89,15 @@ export const pagesRoutes: Routes = [
    },
 
    {
-    path: 'listar-transportistas',
+    path: 'listar-transportistas-sin-furgon',
     component: UserTransportistaComponent,
+    canActivate: [roleGuard],
+    data: {role: ['ADMIN']}
+   },
+
+   {
+    path: 'listar-transportistas',
+    component: ListarTransportistasComponent,
     canActivate: [roleGuard],
     data: {role: ['ADMIN']}
    },

@@ -45,8 +45,9 @@ export class UserTransportistaConFurgonComponent {
 
   }
 
+  //Método para ver transportistas con furgon asignado
   getTransportistasConFurgon():void {
-    this.authService.getAllTransportistas(this.currentPage,this.pageSize).subscribe(
+    this.authService.getAllTransportistasConFurgon(this.currentPage,this.pageSize).subscribe(
       response =>{
         this.transportistasConFurgon = response.content;
         this.totalElements = response.totalElements;

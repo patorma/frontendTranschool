@@ -101,14 +101,6 @@ export class AuthService {
       return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/apoderados/page`,{ params });
   }
 
-  getAllTransportistas(page: number,size:number):Observable<PaginatedResponse>{
-         //le envia los parametros de paginacion
-       const params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString())
-       return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/transportistas/page`,{ params });
-  }
-
   //lista todos los furgones
   getAllFurgones(page: number,size:number):Observable<PaginatedFurgonResponse>{
       const params = new HttpParams()
@@ -118,13 +110,25 @@ export class AuthService {
       return this.http.get<PaginatedFurgonResponse>(`${this.baseURLAdmin}/furgones/page`,{ params });
   }
 
-
+  getAllTransportistas(page: number,size:number):Observable<PaginatedResponse>{
+       const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios/transportistas/page`,{params});
+  }
   getAllTransportistasSinFurgon(page: number,size:number):Observable<PaginatedResponse>{
      //le envia los parametros de paginacion
        const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString())
        return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios-transportistas/sin-furgon/page`,{params});
+  }
+
+  getAllTransportistasConFurgon(page:number,size:number): Observable<PaginatedResponse>{
+     const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      return this.http.get<PaginatedResponse>(`${this.baseURLAdmin}/usuarios-transportistas/con-furgon/page`,{params});
   }
 
   //ver estudiantes de un furgon
@@ -135,7 +139,7 @@ getEstdiantesbyFurgon(id:number,page: number,size:number,):Observable<PaginatedA
     return this.http.get<PaginatedAsignacionEstudianteResponse>(`${this.baseURLAdmin}/asigFurgon/page/idFurgon?id=${id}`,{params})
 }
 
-//se crea la asignacion del estudiante 
+//se crea la asignacion del estudiante
  createAsignacion(asignacionEstudianteRequest:AsignacionEstudianteRequest):Observable<AsignacionEstudianteResponse>{
   return this.http.post<AsignacionEstudianteResponse>(`${this.baseURLAdmin}/asignacion`,asignacionEstudianteRequest);
  }

@@ -1,0 +1,36 @@
+<h1>Lista de Transportistas</h1>
+
+<div class="catalog-container">
+   <div class="main-content">
+      <div class="result-count">
+         <app-register-counter [total]="totalElements" label="transportistas encontrado(s)"></app-register-counter>
+      </div>
+      <div class="card-grid">
+         @for (transportista of transportistas; track $index){
+          <div class="card-item">
+               <mat-card class="transportista-card">
+                 <mat-card-header>
+                    <mat-card-title>{{ transportista.nombres }} {{transportista.apellidos}}</mat-card-title>
+                    <mat-card-subtitle>{{ transportista.email }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Rol:</strong>  {{ transportista.role }}</p>
+                    <p><strong>Comuna:</strong> {{ transportista.comuna }}</p>
+                    <p><strong>Telefono:</strong> {{ transportista.telefono }}</p>
+                    <p><strong>ID:</strong> {{ transportista.id }}</p>
+                </mat-card-content>
+               </mat-card>
+          </div>
+         } @empty {
+        <p>No hay transportistas registrados!!!</p>
+      }
+      </div>
+       <!-- Paginador -->
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[9, 12, 24]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+   </div>
+</div>
