@@ -21,6 +21,8 @@ import { FormRecorridoComponent } from "./home/form-recorrido/form-recorrido.com
 import { ListarEstudiantesAdminComponent } from "./home/listar-estudiantes-admin/listar-estudiantes-admin.component";
 import { ListarEstudiantesByFurgonComponent } from "./home/listar-estudiantes-by-furgon/listar-estudiantes-by-furgon.component";
 import { ListarTransportistasComponent } from "./home/listar-transportistas/listar-transportistas.component";
+import { MisEstudiantesComponent } from "./home/mis-estudiantes/mis-estudiantes.component";
+import { FormMyEstudiantesComponent } from "./home/form-my-estudiantes/form-my-estudiantes.component";
 
 
 
@@ -115,7 +117,7 @@ export const pagesRoutes: Routes = [
     data:{role: ['ADMIN']}
    },
    {
-    path:'mesnsualiddaes-sin-pago',
+    path:'mensualidades-sin-pago',
     component:MensualidadSinPagoComponent,
      canActivate: [roleGuard],
     data:{role: ['ADMIN']}
@@ -163,5 +165,18 @@ export const pagesRoutes: Routes = [
     component: MisMensualidadesComponent,
     canActivate: [roleGuard],
     data: {role: ['APODERADO']}
+   },
+   {
+    path:'my-estudiantes',
+    component:MisEstudiantesComponent,
+    canActivate: [roleGuard],
+     data: {role: ['APODERADO']}
+   },
+
+   {
+    path:'formEstudiante',
+    component: FormMyEstudiantesComponent,
+    canActivate: [roleGuard],
+     data: {role: ['APODERADO']}
    }
 ];

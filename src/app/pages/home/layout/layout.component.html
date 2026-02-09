@@ -65,7 +65,7 @@
        <button mat-menu-item routerLink="/pages/mensualidades">
           <mat-icon> attach_money</mat-icon> Mensualiddaes pagadas
        </button>
-       <button mat-menu-item routerLink="/pages/mesnsualiddaes-sin-pago">
+       <button mat-menu-item routerLink="/pages/mensualidades-sin-pago">
          <mat-icon>attach_money</mat-icon> Mensualiddaes sin pago
        </button>
     </mat-menu>
@@ -79,26 +79,40 @@
     >
       Pagos
     </button>
+
     <button
        *ngIf="isApoderado"
        mat-button
-       routerLink="/pages/my-mensualidades"
        class="ms-3"
        routerLinkActive="active"
-       [routerLinkActiveOptions]="{ exact: true }"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [matMenuTriggerFor]="mensualidadesApoderado"
       >
        Mis mensualidades
     </button>
+      <mat-menu #mensualidadesApoderado>
+         <button mat-menu-item  routerLink="/pages/my-mensualidades">
+           <mat-icon> attach_money</mat-icon> Historial mensualidades
+         </button>
+      </mat-menu>
     <button
        *ngIf="isApoderado"
        mat-button
-       routerLink="/pages/my-mensualidades"
        class="ms-3"
        routerLinkActive="active"
-       [routerLinkActiveOptions]="{ exact: true }"
+     [routerLinkActiveOptions]="{ exact: true }"
+      [matMenuTriggerFor]="estudiantesApoderado"
       >
        Mis estudiantes
     </button>
+    <mat-menu #estudiantesApoderado>
+      <button mat-menu-item routerLink="/pages/my-estudiantes">
+           <mat-icon>school</mat-icon> Mis estudiantes
+      </button>
+      <button mat-menu-item routerLink="/pages/formEstudiante">
+           <mat-icon>school</mat-icon> Registrar estudiante
+      </button>
+    </mat-menu>
     <span class="spacer"></span>
     <button mat-button [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon> {{ user.nombres }} {{user.apellidos}}

@@ -1,0 +1,52 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2 class="fw-bold text-center">Regístra a tu estudiante</h2>
+    <form [formGroup]="estudianteForm" (ngSubmit)="onSubmit()">
+       <mat-form-field appearance="outline" class="full-width">
+         <mat-label>Nombres</mat-label>
+          <input matInput formControlName="nombres" type="text" required />
+           @if(controlHasError('nombres', 'required')){
+			       <mat-error>Los nombres son obligatorios</mat-error>
+		        }
+       </mat-form-field>
+       <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos" type="text" required />
+          @if(controlHasError('apellidos', 'required')){
+			      <mat-error>Los apellidos son obligatorios</mat-error>
+		      }
+       </mat-form-field>
+       <mat-form-field appearance="outline">
+          <mat-label>Fecha de Nacimiento</mat-label>
+           <input matInput [matDatepicker]="pickerFin" formControlName="fechaNacimiento">
+           @if(controlHasError('fechaNacimiento', 'required')){
+             <mat-error>La fecha de Nacimiento es obligatoria</mat-error>
+           }
+            <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFin></mat-datepicker>
+       </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+           <mat-label>Colegio</mat-label>
+          <input matInput formControlName="colegio" type="text" required />
+           @if(controlHasError('colegio', 'required')){
+			      <mat-error>El colegio es obligatorio</mat-error>
+		      }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+           <mat-label>Email</mat-label>
+           <input matInput formControlName="email" type="email" required />
+             @if(controlHasError('email', 'required')){
+            <mat-error>El email es obligatorio</mat-error>
+          }
+          @if(controlHasError('email', 'email')){
+            <mat-error>Ingrese un email válido</mat-error>
+          }
+          @if(controlHasError('email','pattern')){
+             <mat-error>Formato inválido</mat-error>
+          }
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!estudianteForm.valid" class="btn-login">Registra a tu estudiante</button>
+    </form>
+  </div>
+</div>
